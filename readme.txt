@@ -1,8 +1,27 @@
+<p align="center">
+  <img src="logo.svg" alt="Relnk" width="480">
+</p>
+
+<p align="center">
+  [![npm version](https://img.shields.io/npm/v/relnk.svg)](https://www.npmjs.com/package/relnk)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
+</p>
+
 # relnk
 
 Relnk for **any LLM provider**: observe your chat request/response in Relnk and, when Relnk has learned a procedure, get the result from Relnk without calling your provider.
 
 Works with OpenAI, Anthropic, OpenAI-compatible APIs, and any provider that returns messages and a completion.
+
+## Table of contents
+
+- [Install](#install)
+- [Use with any LLM (generic API)](#use-with-any-llm-generic-api)
+- [OpenAI adapter](#openai-adapter-optional)
+- [Environment variables](#environment-variables)
+- [API](#api)
+- [License](#license)
 
 ## Install
 
@@ -10,9 +29,13 @@ Works with OpenAI, Anthropic, OpenAI-compatible APIs, and any provider that retu
 npm install relnk
 ```
 
-For the **OpenAI adapter** (optional): `npm install relnk openai`
+For the **OpenAI adapter** (optional):
 
-Requires Node 18+.
+```bash
+npm install relnk openai
+```
+
+Requires **Node 18+**.
 
 ---
 
@@ -110,9 +133,9 @@ const completion = await openai.chat.completions.create({
 
 ## Environment variables
 
-| Variable         | Used when not passed in options |
-|------------------|----------------------------------|
-| `RELNK_API_KEY` | `relnkApiKey` in any API        |
+| Variable         | Description                                      |
+|------------------|--------------------------------------------------|
+| `RELNK_API_KEY`  | Relnk API key (used when `relnkApiKey` not set)  |
 
 Requests go to `https://api.relnk.ai/v1` (observe and complete).
 
@@ -120,16 +143,24 @@ Requests go to `https://api.relnk.ai/v1` (observe and complete).
 
 ## API
 
-**Generic (any LLM)**  
-- **`observe(payload)`** – `payload`: `{ relnkApiKey, messages, model?, response }`. POSTs to `/v1/observe`. Does not throw on failure (logs only).  
-- **`complete(options)`** – `options`: `{ relnkApiKey, messages, model? }`. Returns `Promise<{ completion } | { forward: true }>`.
+### Generic (any LLM)
 
-**OpenAI adapter** (requires `openai` installed)  
-- **`observeOpenAI(openaiClient, options)`** – `options`: `{ relnkApiKey }`. Wraps `chat.completions.create` and observes each call.  
-- **`createRelnkClient(options)`** – `options`: `{ openaiApiKey, relnkApiKey }`. Returns an OpenAI-like client that tries Relnk first, then OpenAI on forward.
+| Function      | Description |
+|---------------|-------------|
+| `observe(payload)` | `payload`: `{ relnkApiKey, messages, model?, response }`. POSTs to `/v1/observe`. Does not throw on failure (logs only). |
+| `complete(options)` | `options`: `{ relnkApiKey, messages, model? }`. Returns `Promise<{ completion } \| { forward: true }>`. |
 
-For API keys and configuration, see [Relnk docs](https://relnk.ai/docs).
+### OpenAI adapter (requires `openai` installed)
+
+| Function      | Description |
+|---------------|-------------|
+| `observeOpenAI(openaiClient, options)` | `options`: `{ relnkApiKey }`. Wraps `chat.completions.create` and observes each call. |
+| `createRelnkClient(options)` | `options`: `{ openaiApiKey, relnkApiKey }`. Returns an OpenAI-like client that tries Relnk first, then OpenAI on forward. |
+
+For API keys and configuration, see [Relnk docs](https://relnk.io/docs).
+
+---
 
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)
