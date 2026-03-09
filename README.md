@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://relnk.io/">
+  <a href="https://relnk.ai/">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="logo.svg">
       <source media="(prefers-color-scheme: dark)" srcset="logo.svg">
@@ -30,10 +30,10 @@ For drop-in integration with the OpenAI client (observe or complete-first withou
 
 **Documentation**:
 
-- [relnk.io/docs](https://relnk.io/docs) – API keys, configuration, and how Relnk learns
+- [relnk.ai/docs](https://relnk.ai/docs) – API keys, configuration, and how Relnk learns
 - [npm – relnk](https://www.npmjs.com/package/relnk) – Package and version history
 
-**Community**: Share feedback and questions in the [Relnk community](https://relnk.io/docs) or open an issue on GitHub.
+**Community**: Share feedback and questions in the [Relnk community](https://relnk.ai/docs) or open an issue on GitHub.
 
 > [!NOTE]
 > Relnk works with any LLM. Use the generic `observe()` and `complete()` for your provider, or the **OpenAI adapter** (`observeOpenAI`, `createRelnkClient`) if you use the `openai` package.
@@ -61,7 +61,7 @@ Relnk fits into your current setup without replacing your LLM client:
 ## Additional resources
 
 - [API reference](#api) – `observe`, `complete`, `observeOpenAI`, `createRelnkClient`
-- [Relnk docs](https://relnk.io/docs) – Configuration and how learning works
+- [Relnk docs](https://relnk.ai/docs) – Configuration and how learning works
 - [License](https://opensource.org/licenses/MIT) – MIT
 
 ---
@@ -209,7 +209,7 @@ Requests go to `https://api.relnk.ai/v1` (observe and complete).
 | `observeOpenAI(openaiClient, options)` | `options`: `{ relnkApiKey }`. Wraps `chat.completions.create` and observes each call. |
 | `createRelnkClient(options)` | `options`: `{ openaiApiKey, relnkApiKey }`. Returns an OpenAI-like client that tries Relnk first, then OpenAI on forward. |
 
-For API keys and configuration, see [Relnk docs](https://relnk.io/docs).
+For API keys and configuration, see [Relnk docs](https://relnk.ai/docs).
 
 ---
 
