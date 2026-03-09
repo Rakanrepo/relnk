@@ -128,7 +128,7 @@ Requests go to `https://api.relnk.ai/v1` (observe and complete).
 - **`observeOpenAI(openaiClient, options)`** – `options`: `{ relnkApiKey }`. Wraps `chat.completions.create` and observes each call.  
 - **`createRelnkClient(options)`** – `options`: `{ openaiApiKey, relnkApiKey }`. Returns an OpenAI-like client that tries Relnk first, then OpenAI on forward.
 
-For API keys and configuration, see [Relnk docs](https://relnk.io/docs).
+For API keys and configuration, see [Relnk docs](https://relnk.ai/docs).
 
 ## License
 
